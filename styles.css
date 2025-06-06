@@ -89,8 +89,6 @@ button.rsvp:hover, button.rsvp:focus {
     width: 50vw;
     max-width: 700px;
     height: auto;
-    /* Remove background-image for pure glass effect */
-    /* background-image: url('images/postcard.jpg'); */
     background: rgba(243, 231, 205, 0.65); /* semi-transparent old paper color */
     box-shadow: var(--card-shadow);
     border-radius: var(--card-radius);
@@ -100,11 +98,8 @@ button.rsvp:hover, button.rsvp:focus {
     cursor: move;
     user-select: none;
     word-wrap: break-word;
-    /* Glassy blur effect */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1.5px solid rgba(210, 180, 140, 0.22); /* subtle border */
-    /* Optional: add a grain overlay with a pseudo-element if you want */
 }
 .postcard-divider {
     border: none;
