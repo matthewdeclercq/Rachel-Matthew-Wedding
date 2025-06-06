@@ -268,12 +268,12 @@ a:hover, a:focus {
 /* Mobile and small tablet styles */
 @media screen and (max-width: 768px) {
     body, html {
-        overflow: auto; /* Enable scrolling */
+        overflow-y: auto; /* Enable scrolling */
+        overflow-x: hidden; /* Prevent horizontal scrolling */
     }
     .page {
         height: auto; /* Allow page to grow with content */
-        padding-bottom: 80px; /* Space for banner */
-        margin-left: px;
+        padding-bottom: 100px; /* Space for banner */
     }
     .page::before {
         content: '';
@@ -306,9 +306,9 @@ a:hover, a:focus {
     }
     .postcard {
         position: relative;
-        width: 90%;
+        width: calc(100% - 32px); /* 16px left + 16px right margin */
         height: auto; 
-        margin: 16px 16px 16px 16px; 
+        margin: 16px auto; 
         cursor: default; /* No dragging on mobile */
         transform: none; /* No rotation */
         padding: var(--card-padding);
