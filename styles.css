@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&family=Ysabeau+Office:wght@400;700&display=swap');
+
+:root {
+    --main-green: #29524c;
+    --main-green-light: #3a6b54;
+    --main-bg: #f3e7cd;
+    --accent-brown: #d2b48c;
+    --card-radius: 8px;
+    --card-padding: 24px;
+    --card-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    --banner-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    --divider-thickness: 4px;
+    --divider-radius: 2px;
+    --divider-width: 100%;
+    --font-heading: 'Sriracha', cursive;
+    --font-body: 'Ysabeau Office', sans-serif;
+    --font-weight-body: 500;
+    --font-size-body: clamp(13px, 3vw, 16px);
+    --font-size-small: clamp(10px, 2.5vw, 12px);
+    --font-size-banner: 3em;
+    --font-size-banner-mobile: 2.2em;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Default: no scrolling for desktop */
+    letter-spacing: 0.02em;
+    line-height: 1.3; 
+}
+.page {
+    width: 100%;
+    height: 100vh;
+    background-image: url('images/table_h.png'); /* Replace with your image path */
+    background-size: cover; /* Cover the entire card */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-color: var(--accent-brown); /* light brown */
+    position: relative;
+    overflow: hidden;
+}
+button.rsvp {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: var(--main-green);
+    color: #fff;
+    padding: 1em 1.5em;
+    border: none;
+    border-radius: var(--card-radius);
+    cursor: pointer;
+    font-size: 1.3em;
+    font-family: var(--font-body);
+    font-weight: 600;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--main-green) 18%, transparent);
+    z-index: 1000;
+    width: auto;
+    height: auto;
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: 0;
+    min-height: 0;
+    max-width: 90vw;
+    max-height: none;
+    transition: 
+        background 0.2s,
+        color 0.2s,
+        box-shadow 0.2s;
+}
+button.rsvp:hover, button.rsvp:focus {
+    background: var(--main-green-light);
+    color: #fffbe6;      /* Warm off-white for contrast */
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--main-green) 22%, transparent), 0 0 0 4px #b7c9a855;
+    outline: none;
+}
+.banner {
+    position: absolute;
+    top: 0px;
+    left: 24px;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: var(--font-size-banner);
+    text-shadow: var(--banner-shadow);
+}
+.postcard {
+    position: absolute;
+    width: 50vw;
+    max-width: 700px;
+    height: auto;
+    background-image: url('images/postcard.jpg'); /* Replace with your image path */
+    background-size: cover; /* Cover the entire card */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent tiling */
+    background-color: var(--main-bg);      
+    box-shadow: var(--card-shadow);
+    border-radius: var(--card-radius);
+    padding: var(--card-padding);
+    margin: var(--card-padding);
+    box-sizing: border-box;
+    cursor: move;
+    user-select: none;
+    word-wrap: break-word; /* Prevent text overflow */
+}
+.postcard-divider {
+    border: none;
+    border-top: var(--divider-thickness) solid var(--main-green);
+    width: var(--divider-width);
+    margin: 12px 0 18px 0;
+    border-radius: var(--divider-radius);
+    background: none;
+}
+.postcard h2 {
+    font-family: var(--font-heading);
+    color: var(--main-green);
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: clamp(14px, 3.5vw, 18px); /* Dynamic scaling */
+    text-transform: uppercase;
+}
+.postcard h3 {
+    font-family: var(--font-heading);
+    color: #15150F;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    font-size: clamp(13px, 3vw, 16px); /* Dynamic scaling */
+    padding: 0;
+}
+.postcard p {
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-body);
+    font-size: var(--font-size-body);
+    color: #15150F;
+    margin: 0;
+    padding: 0;
+    line-height: 1.1rem;
+    text-align: justify;
+}
+.postcard small {
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-body);
+    font-size: var(--font-size-small);
+    display: block;
+    color: #15150F;
+    padding: 0;
+    line-height: 1.1rem;
+    text-align: justify;
+}
+.postcard li {
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-body);
+    margin-bottom: 8px; /* Space between list items */
+    font-size: var(--font-size-body);
+    color: #15150F;
+    line-height: 1.1rem;
+    padding-left: 0;
+    text-indent: 0;
+    text-align: justify;
+}
+.postcard ol,
+.postcard ul {
+    padding-left: 1.5em;
+    margin-left: 0;
+}
+a {
+    color: #23395d;
+    text-decoration: underline;
+}
+a:hover, a:focus {
+    color: #15150F;
+}
+.copyable, .copyable * {
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-body);
+    user-select: text !important;
+    cursor: text !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    pointer-events: auto !important;
+}
+.gallery-modal {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    display: flex;
+    align-items: flex-end; /* Anchor to bottom */
+    justify-content: center;
+    background: none;
+    pointer-events: none; /* Prevent interaction except on sheet */
+}
+.gallery-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(41, 82, 76, 0.65);
+    backdrop-filter: blur(2px);
+    z-index: 0;
+    pointer-events: auto;
+    transition: opacity 0.4s;
+    opacity: 1;
+}
+.gallery-backdrop.closing {
+    opacity: 0;
+}
+.gallery-content {
+    position: relative;
+    width: 100vw;
+    max-width: 100vw;
+    min-height: 60vh;
+    max-height: 90vh;
+    background: rgba(243, 231, 205, 0.97);
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -8px 32px rgba(41,82,76,0.18);
+    padding: 32px 16px 24px 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(100%);
+    animation: slideUpSheet 0.4s cubic-bezier(.4,1.4,.6,1) forwards;
+    pointer-events: auto;
+}
+@keyframes slideUpSheet {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+}
+.gallery-content.closing {
+    animation: slideDownSheet 0.4s cubic-bezier(.4,1.4,.6,1) forwards;
+}
+@keyframes slideDownSheet {
+    from { transform: translateY(0); }
+    to   { transform: translateY(100%); }
+}
+.gallery-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: var(--main-green);
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.2s;
+}
+.gallery-close:hover {
+    color: #ff3131;
+}
+.gallery-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 40px;
+}
+.gallery-images img {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(41,82,76,0.10);
+    width: 180px;
+    height: 135px;
+    object-fit: cover;
+    background: #eee;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.gallery-images img:hover {
+    transform: scale(1.04) rotate(-1deg);
+    box-shadow: 0 6px 18px rgba(41,82,76,0.18);
+}
+/* Mobile and small tablet styles */
+@media screen and (max-width: 768px) {
+    body, html {
+        overflow: auto; /* Enable scrolling */
+    }
+    .page {
+        height: auto; /* Allow page to grow with content */
+        padding-bottom: 80px; /* Space for banner */
+        margin-left: px;
+    }
+    .page::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 0;
+        background: url('images/table_v.png') center center / cover no-repeat #d2b48c;
+        pointer-events: none;
+    }
+    button.rsvp {
+        position: fixed;
+        left: 50%;
+        bottom: 24px;
+        top: auto;
+        right: auto;
+        transform: translateX(-50%);
+        z-index: 1000;
+        width: auto;
+        height: auto;
+        display: inline-block;
+    }
+    .banner {
+        position: relative;
+        bottom: auto;
+        left: 0;
+        right: 0;
+        margin: 24px auto; 
+        text-align: center;
+        font-size: var(--font-size-banner-mobile); /* Slightly smaller for mobile */
+    }
+    .postcard {
+        position: relative;
+        width: 90%;
+        height: auto; 
+        margin: 16px 16px 16px 16px; 
+        cursor: default; /* No dragging on mobile */
+        transform: none; /* No rotation */
+        padding: var(--card-padding);
+    }
+    .postcard h2 {
+        font-size: clamp(16px, 4vw, 18px);
+    }
+    .postcard p {
+        font-size: clamp(13px, 3vw, 15px);
+        display: block; 
+        margin: 0;
+        padding: 0;
+        text-align: justify;
+    }
+    .postcard small {
+        font-size: var(--font-size-small);
+        color: #15150F;
+        display: block; 
+        padding: 0;
+        text-align: justify;
+    }
+    .postcard li {
+        font-size: clamp(13px, 3vw, 15px);
+        padding: 0;
+        text-align: justify;
+    }
+    .gallery-content {
+        padding: 16px 2vw 12px 2vw;
+        min-height: 75vh;
+        max-height: 90vh;
+    }
+    .gallery-images img {
+        width: 44vw;
+        height: 33vw;
+        min-width: 120px;
+        min-height: 90px;
+    }
+}
