@@ -1,24 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Sriracha&family=Ysabeau+Office:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&family=Hammersmith+One&family=Ysabeau+SC:wght@400;700&display=swap');
 
 :root {
-    --main-green: #29524c;
+    --main-green: #bc1f1b;
     --main-green-light: #3a6b54;
     --main-bg: #f3e7cd;
     --accent-brown: #d2b48c;
     --card-radius: 8px;
     --card-padding: 24px;
-    --card-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    --card-shadow: 0 4px 8px rgba(0,0,0,0.4);
     --banner-shadow: 0 2px 8px rgba(0,0,0,0.4);
     --divider-thickness: 4px;
     --divider-radius: 2px;
     --divider-width: 100%;
-    --font-heading: 'Sriracha', cursive;
-    --font-body: 'Ysabeau Office', sans-serif;
+    --banner-heading: 'Yellowtail', cursive;
+    --font-heading: 'Ysabeau SC', sans-serif;
+    --font-body: 'Ysabeau SC', sans-serif;
     --font-weight-body: 500;
     --font-size-body: clamp(13px, 3vw, 16px);
     --font-size-small: clamp(10px, 2.5vw, 12px);
-    --font-size-banner: 3em;
-    --font-size-banner-mobile: 2.2em;
+    --font-size-banner: 4em;
+    --font-size-banner-mobile: 3em;
 }
 
 body, html {
@@ -31,7 +32,7 @@ body, html {
 .page {
     width: 100%;
     height: 100vh;
-    background-image: url('images/bg_h.jpg'); /* Replace with your image path */
+    background-image: url('images/bg2_h.jpg'); /* Replace with your image path */
     background-size: cover; /* Cover the entire card */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent tiling */
@@ -78,7 +79,8 @@ button.rsvp:hover, button.rsvp:focus {
     top: 0px;
     left: 24px;
     color: #fff;
-    font-family: var(--font-heading);
+    letter-spacing: 2px;
+    font-family: var(--banner-heading);
     font-size: var(--font-size-banner);
     text-shadow: var(--banner-shadow);
 }
@@ -280,7 +282,7 @@ a:hover, a:focus {
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
         z-index: 0;
-        background: url('images/bg_v.jpg') center center / cover no-repeat #d2b48c;
+        background: url('images/bg2_v.jpg') center center / cover no-repeat #d2b48c;
         pointer-events: none;
     }
     button.rsvp {
