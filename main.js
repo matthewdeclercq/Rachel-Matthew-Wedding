@@ -160,24 +160,60 @@ document.getElementById('open-gallery').addEventListener('click', function(e) {
     document.body.style.overflow = 'hidden';
     document.getElementById('gallery-modal').focus();
 });
-function closeGalleryModal() {
-    const modal = document.getElementById('gallery-modal');
-    const content = modal.querySelector('.gallery-content');
-    const backdrop = modal.querySelector('.gallery-backdrop');
-    content.classList.add('closing');
-    backdrop.classList.add('closing');
-    setTimeout(() => {
-        modal.style.display = 'none';
-        content.classList.remove('closing');
-        backdrop.classList.remove('closing');
-        document.body.style.overflow = '';
-    }, 400); // Match animation duration
-}
+document.addEventListener('DOMContentLoaded', function () {
+    const galleryModal = document.getElementById('gallery-modal');
+    const galleryContent = document.querySelector('.gallery-content');
+    const galleryClose = document.querySelector('.gallery-close');
+    let startY = null;
+    let isSwiping = false;
 
-document.querySelector('.gallery-close').addEventListener('click', closeGalleryModal);
-document.querySelector('.gallery-backdrop').addEventListener('click', closeGalleryModal);
-document.getElementById('gallery-modal').addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeGalleryModal();
+    // Open modal example (if you have a trigger)
+    const openGallery = document.getElementById('open-gallery');
+    if (openGallery) {
+        openGallery.addEventListener('click', function (e) {
+            e.preventDefault();
+            galleryModal.style.display = 'flex';
+        });
+    }
+
+    // Close modal function
+    function closeGalleryModal() {
+        galleryModal.style.display = 'none';
+    }
+
+    // Close on close button
+    if (galleryClose) {
+        galleryClose.addEventListener('click', closeGalleryModal);
+    }
+
+    // Touch events for swipe down to close
+    galleryContent.addEventListener('touchstart', function (e) {
+        if (e.touches.length === 1 && galleryContent.scrollTop === 0) {
+            startY = e.touches[0].clientY;
+            isSwiping = true;
+        } else {
+            isSwiping = false;
+        }
+    });
+
+    galleryContent.addEventListener('touchmove', function (e) {
+        if (!isSwiping) return;
+        const currentY = e.touches[0].clientY;
+        const diffY = currentY - startY;
+        // Only close if swiping down and still at top
+        if (diffY > 40 && galleryContent.scrollTop === 0) {
+            closeGalleryModal();
+            isSwiping = false;
+        }
+    });
+
+    galleryContent.addEventListener('touchend', function () {
+        isSwiping = false;
+    });
+
+    // Optional: close on backdrop click
+    const galleryBackdrop = document.querySelector('.gallery-backdrop');
+    if (galleryBackdrop) {
+        galleryBackdrop.addEventListener('click', closeGalleryModal);
     }
 });

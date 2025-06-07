@@ -331,7 +331,6 @@ a:hover, a:focus {
     .postcard small {
         font-size: var(--font-size-small);
         color: #15150F;
-        display: block; 
         padding: 0;
         text-align: justify;
     }
@@ -341,7 +340,7 @@ a:hover, a:focus {
         text-align: justify;
     }
     .gallery-content {
-        padding: 16px 16w 16px 16px;
+        padding: 16px 16px 16px 16px;
         min-height: 75vh;
         max-height: 90vh;
     }
