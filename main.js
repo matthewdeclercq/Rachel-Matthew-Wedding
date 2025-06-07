@@ -178,7 +178,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Close modal function
     function closeGalleryModal() {
-        galleryModal.style.display = 'none';
+        // Add a class to trigger the closing animation
+        galleryContent.classList.add('closing');
+        galleryBackdrop.classList.add('closing');
+
+        // Listen for animation end, then hide modal
+        galleryContent.addEventListener('animationend', function handler() {
+            galleryModal.style.display = 'none';
+            galleryContent.classList.remove('closing');
+            galleryBackdrop.classList.remove('closing');
+            galleryContent.removeEventListener('animationend', handler);
+        });
     }
 
     // Close on close button
