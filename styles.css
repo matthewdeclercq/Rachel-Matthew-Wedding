@@ -205,12 +205,12 @@ a:hover, a:focus {
     position: relative;
     width: 100vw;
     max-width: 100vw;
-    min-height: 60vh;
+    min-height: 70vh;
     max-height: 90vh;
-    background: rgba(243, 231, 205, 0.65); /* semi-transparent old paper color */
+    background: rgba(243, 231, 205, 0.6); /* semi-transparent old paper color */
     border-radius: 24px 24px 0 0;
     box-shadow: 0 -8px 32px rgba(41,82,76,0.18);
-    padding: 32px 16px 24px 16px;
+    padding: 24px 24px 24px 24px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -250,24 +250,26 @@ a:hover, a:focus {
 }
 .gallery-images {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+    flex-wrap: nowrap; /* Prevent wrapping on desktop */
+    gap: 24px;
     justify-content: center;
     margin-top: 40px;
 }
+
 .gallery-images img {
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(41,82,76,0.10);
-    width: 180px;
-    height: 135px;
+    box-shadow: 0 2px 8px rgba(41,82,76,0.4);
+    width: 28vw;           /* Responsive width for 3 images in a row */
+    max-width: 320px;      /* Prevent images from getting too large */
+    min-width: 120px;      /* Prevent images from getting too small */
+    height: auto;
     object-fit: cover;
     background: #eee;
     transition: transform 0.2s, box-shadow 0.2s;
 }
-.gallery-images img:hover {
-    transform: scale(1.04) rotate(-1deg);
-    box-shadow: 0 6px 18px rgba(41,82,76,0.18);
-}
+
+
+
 /* Mobile and small tablet styles */
 @media screen and (max-width: 768px) {
     body, html {
@@ -339,14 +341,23 @@ a:hover, a:focus {
         text-align: justify;
     }
     .gallery-content {
-        padding: 16px 2vw 12px 2vw;
+        padding: 16px 16w 16px 16px;
         min-height: 75vh;
         max-height: 90vh;
     }
+    .gallery-images {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 16px;
+        justify-content: flex-start;
+        margin-top: 40px;
+    }
     .gallery-images img {
-        width: 44vw;
-        height: 33vw;
-        min-width: 120px;
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        min-width: 100px;
         min-height: 90px;
     }
 }
