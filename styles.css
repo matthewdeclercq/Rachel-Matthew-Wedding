@@ -170,7 +170,8 @@ a:hover, a:focus {
 }
 .copyable, .copyable * {
     font-family: var(--font-body);
-    font-weight: var(--font-weight-body);
+    font-weight: bold;
+    font-size: var(--font-size-body);
     user-select: text !important;
     cursor: text !important;
     -webkit-user-select: text !important;
