@@ -95,8 +95,8 @@ function applyLayout() {
 }
 
 function startDragging(e) {
-    // Don't drag if clicking on a copyable element
-    if (e.target.closest('.copyable')) return;
+    // Don't drag if clicking on a copyable element or a link/button
+    if (e.target.closest('.copyable, a, button')) return;
 
     e.preventDefault();
     draggedCard = this;
@@ -112,6 +112,28 @@ function startDragging(e) {
         const touch = e.touches[0];
         offsetX = touch.clientX - rect.left;
         offsetY = touch.clientY - rect.top;
+        // Touch drag/tap distinction
+        let dragStartY = touch.clientY;
+        let dragStartX = touch.clientX;
+        let isDragging = false;
+        const moveHandler = (moveEvent) => {
+            const moveTouch = moveEvent.touches[0];
+            const diffY = Math.abs(moveTouch.clientY - dragStartY);
+            const diffX = Math.abs(moveTouch.clientX - dragStartX);
+            if (diffY > 10 || diffX > 10) {
+                isDragging = true;
+            }
+        };
+        const endHandler = (endEvent) => {
+            if (!isDragging) {
+                // This was a tap, let the event bubble to links/buttons
+                draggedCard = null;
+            }
+            document.removeEventListener('touchmove', moveHandler);
+            document.removeEventListener('touchend', endHandler);
+        };
+        document.addEventListener('touchmove', moveHandler);
+        document.addEventListener('touchend', endHandler);
     }
 }
 
