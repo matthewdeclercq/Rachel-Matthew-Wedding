@@ -1,49 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Yellowtail&family=Hammersmith+One&family=Ysabeau+SC:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&family=Ysabeau+SC:wght@400;700&display=swap');
 
 :root {
     --main-green: #bc1f1b;
     --main-green-light: #3a6b54;
-    --main-bg: #f3e7cd;
     --accent-brown: #d2b48c;
     --card-radius: 8px;
     --card-padding: 24px;
     --card-shadow: 0 4px 8px rgba(0,0,0,0.3);
     --banner-shadow: 0 2px 12px rgba(0,0,0,0.3);
-    --divider-thickness: 4px;
-    --divider-radius: 2px;
-    --divider-width: 100%;
-    --banner-heading: 'Yellowtail', cursive;
     --font-heading: 'Ysabeau SC', sans-serif;
     --font-body: 'Ysabeau SC', sans-serif;
-    --font-weight-body: 500;
+    --font-banner: 'Yellowtail', cursive;
     --font-size-body: clamp(15px, 3vw, 17px);
     --font-size-small: clamp(13px, 2.5vw, 15px);
     --font-size-banner: 4em;
     --font-size-banner-mobile: 3em;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body, html {
     margin: 0;
     padding: 0;
-    overflow-y: auto; /* Enable scrolling for all screen sizes */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
     letter-spacing: 0.02em;
-    line-height: 1.3; 
+    line-height: 1.3;
 }
+
 .page {
-    width: 100%;
-    height: auto; /* Allow page to grow with content */
     min-height: 100vh;
-    background-image: url('images/bg2_h.jpg'); /* Replace with your image path */
-    background-size: cover; /* Cover the entire card */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Prevent tiling */
-    background-color: var(--accent-brown); /* light brown */
-    position: relative;
-    overflow: visible;
+    background: url('images/bg2_h.jpg') center/cover no-repeat fixed var(--accent-brown);
     padding-bottom: 96px;
+    padding-top: 24px;
 }
-button.rsvp {
+
+.rsvp {
     position: fixed;
     top: 24px;
     right: 24px;
@@ -56,155 +49,131 @@ button.rsvp {
     font-size: 1.3em;
     font-family: var(--font-body);
     font-weight: 600;
-    box-shadow: 0 2px 8px color-mix(in srgb, var(--main-green) 18%, transparent);
+    box-shadow: 0 2px 8px rgba(188, 31, 27, 0.18);
     z-index: 1000;
-    width: auto;
-    height: auto;
-    display: inline-block;
-    box-sizing: border-box;
-    min-width: 0;
-    min-height: 0;
-    max-width: 90vw;
-    max-height: none;
-    transition: 
-        background 0.2s,
-        color 0.2s,
-        box-shadow 0.2s;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
-button.rsvp:hover, button.rsvp:focus {
+
+.rsvp:hover, .rsvp:focus {
     background: var(--main-green-light);
-    color: #fffbe6;      /* Warm off-white for contrast */
-    box-shadow: 0 6px 18px color-mix(in srgb, var(--main-green) 22%, transparent), 0 0 0 4px #b7c9a855;
+    color: #fffbe6;
+    box-shadow: 0 6px 18px rgba(188, 31, 27, 0.22), 0 0 0 4px rgba(183, 201, 168, 0.33);
     outline: none;
 }
+
 .banner {
-    position: relative;
-    top: auto;
-    left: auto;
     color: #fff;
     letter-spacing: 2px;
-    font-family: var(--banner-heading);
+    font-family: var(--font-banner);
     font-size: var(--font-size-banner);
     text-shadow: var(--banner-shadow);
     margin: 0 auto 24px auto;
     text-align: center;
 }
+
 .postcard {
-    position: relative;
-    width: calc(100% - 32px); /* 16px left + 16px right margin */
+    width: calc(100% - 32px);
     max-width: 724px;
-    height: auto;
-    background: rgba(243, 231, 205, 0.63); 
+    background: rgba(243, 231, 205, 0.63);
     box-shadow: var(--card-shadow);
     border-radius: var(--card-radius);
     padding: var(--card-padding);
-    margin: 24px auto; /* Center cards and add vertical spacing */
-    box-sizing: border-box;
-    word-wrap: break-word;
+    margin: 24px auto;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
+
 .postcard-divider {
     border: none;
-    border-top: var(--divider-thickness) solid var(--main-green);
-    width: var(--divider-width);
+    border-top: 4px solid var(--main-green);
     margin: 12px 0 18px 0;
-    border-radius: var(--divider-radius);
-    background: none;
+    border-radius: 2px;
 }
+
 .postcard h2 {
     font-family: var(--font-heading);
     color: var(--main-green);
-    margin-top: 8px;
-    margin-bottom: 8px;
-    font-size: clamp(14px, 3.5vw, 18px); /* Dynamic scaling */
+    margin: 8px 0;
+    font-size: clamp(14px, 3.5vw, 18px);
     text-transform: uppercase;
 }
+
 .postcard h3 {
     font-family: var(--font-heading);
     color: #15150F;
-    margin-top: 16px;
-    margin-bottom: 8px;
-    font-size: clamp(13px, 3vw, 16px); /* Dynamic scaling */
-    padding: 0;
+    margin: 16px 0 8px 0;
+    font-size: clamp(13px, 3vw, 16px);
 }
-.postcard p {
+
+.postcard p, .postcard li {
     font-family: var(--font-body);
-    font-weight: var(--font-weight-body);
+    font-weight: 500;
     font-size: var(--font-size-body);
     color: #15150F;
     margin: 0;
-    padding: 0;
     line-height: 1.1rem;
-    text-align: left;
 }
-.postcard small {
-    font-family: var(--font-body);
-    font-weight: var(--font-weight-body);
-    font-size: var(--font-size-small);
-    display: block;
-    color: #15150F;
-    padding: 0;
-    line-height: 1.1rem;
-    text-align: left;
-}
+
 .postcard li {
-    font-family: var(--font-body);
-    font-weight: var(--font-weight-body);
-    margin-bottom: 8px; /* Space between list items */
-    font-size: var(--font-size-body);
-    color: #15150F;
-    line-height: 1.1rem;
-    padding-left: 0;
-    text-indent: 0;
-    text-align: left;
+    margin-bottom: 8px;
 }
-.postcard ol,
-.postcard ul {
+
+.postcard ol, .postcard ul {
     padding-left: 1.5em;
     margin-left: 0;
 }
+
+.postcard small {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: var(--font-size-small);
+    display: block;
+    color: #15150F;
+    line-height: 1.1rem;
+}
+
 a {
     color: #23395d;
     text-decoration: underline;
 }
+
 a:hover, a:focus {
     color: #15150F;
 }
 
+/* Gallery Modal */
 .gallery-modal {
     position: fixed;
     z-index: 2000;
     inset: 0;
     display: flex;
-    align-items: flex-end; /* Anchor to bottom */
+    align-items: flex-end;
     justify-content: center;
-    background: none;
-    pointer-events: none; /* Prevent interaction except on sheet */
+    pointer-events: none;
 }
+
 .gallery-backdrop {
     position: fixed;
     inset: 0;
     background: rgba(41, 82, 76, 0.65);
     backdrop-filter: blur(2px);
-    z-index: 0;
     pointer-events: auto;
     transition: opacity 0.4s;
     opacity: 1;
 }
+
 .gallery-backdrop.closing {
     opacity: 0;
 }
+
 .gallery-content {
     position: relative;
     width: 100vw;
-    max-width: 100vw;
     min-height: 70vh;
     max-height: 90vh;
-    background: rgba(243, 231, 205, 0.6); /* semi-transparent old paper color */
+    background: rgba(243, 231, 205, 0.6);
     border-radius: 24px 24px 0 0;
     box-shadow: 0 -8px 32px rgba(41,82,76,0.18);
-    padding: 24px 24px 24px 24px;
+    padding: 24px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -213,20 +182,21 @@ a:hover, a:focus {
     animation: slideUpSheet 0.3s cubic-bezier(.4,1.4,.6,1) forwards;
     pointer-events: auto;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     will-change: transform;
 }
+
 @keyframes slideUpSheet {
-    from { transform: translateY(100%); }
-    to   { transform: translateY(0); }
+    to { transform: translateY(0); }
 }
+
 .gallery-content.closing {
     animation: slideDownSheet 0.3s cubic-bezier(.4,1.4,.6,1) forwards;
 }
+
 @keyframes slideDownSheet {
-    from { transform: translateY(0); }
-    to   { transform: translateY(100%); }
+    to { transform: translateY(100%); }
 }
+
 .gallery-close {
     position: absolute;
     top: 12px;
@@ -239,12 +209,13 @@ a:hover, a:focus {
     z-index: 10;
     transition: color 0.2s;
 }
+
 .gallery-close:hover {
     color: #ff3131;
 }
+
 .gallery-images {
     display: flex;
-    flex-wrap: nowrap; /* Prevent wrapping on desktop */
     gap: 24px;
     justify-content: center;
     margin-top: 40px;
@@ -253,65 +224,55 @@ a:hover, a:focus {
 .gallery-images img {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(41,82,76,0.4);
-    width: 28vw;           /* Responsive width for 3 images in a row */
-    max-width: 320px;      /* Prevent images from getting too large */
-    min-width: 120px;      /* Prevent images from getting too small */
+    width: 28vw;
+    max-width: 320px;
+    min-width: 120px;
     height: auto;
     object-fit: cover;
     background: #eee;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-
-
-/* Mobile and small tablet styles */
+/* Mobile Styles */
 @media screen and (max-width: 768px) {
     .page::before {
         content: '';
         position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
+        inset: 0;
         z-index: 0;
-        background: url('images/bg2_v.jpg') center center / cover no-repeat #d2b48c;
+        background: url('images/bg2_v.jpg') center/cover no-repeat var(--accent-brown);
         pointer-events: none;
     }
-    button.rsvp {
-        position: fixed;
+    
+    .rsvp {
         left: 50%;
         bottom: 24px;
         top: auto;
         right: auto;
         transform: translateX(-50%);
-        z-index: 1000;
-        width: auto;
-        height: auto;
-        display: inline-block;
     }
+    
     .banner {
+        font-size: var(--font-size-banner-mobile);
         position: relative;
-        bottom: auto;
-        left: 0;
-        right: 0;
-        margin: 24px auto; 
-        text-align: center;
-        font-size: var(--font-size-banner-mobile); /* Slightly smaller for mobile */
+        z-index: 1;
     }
+    
     .gallery-content {
-        padding: 16px 16px 16px 16px;
+        padding: 16px;
         min-height: 75vh;
-        max-height: 90vh;
     }
+    
     .gallery-images {
         flex-direction: column;
-        flex-wrap: nowrap;
         align-items: center;
         gap: 16px;
-        justify-content: flex-start;
         margin-top: 40px;
     }
+    
     .gallery-images img {
         width: 100%;
         max-width: 500px;
-        height: auto;
         min-width: 100px;
         min-height: 90px;
     }

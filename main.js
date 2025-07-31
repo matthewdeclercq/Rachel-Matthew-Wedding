@@ -1,13 +1,19 @@
-// JavaScript for gallery modal functionality
-document.addEventListener('DOMContentLoaded', function () {
+// Gallery modal functionality
+document.addEventListener('DOMContentLoaded', function() {
     const galleryModal = document.getElementById('gallery-modal');
     const galleryContent = document.querySelector('.gallery-content');
     const galleryClose = document.querySelector('.gallery-close');
     const galleryBackdrop = document.querySelector('.gallery-backdrop');
+    const openGallery = document.getElementById('open-gallery');
+    
+    if (!galleryModal || !galleryContent || !galleryClose || !galleryBackdrop) {
+        console.warn('Gallery modal elements not found');
+        return;
+    }
+
     let startY = null;
     let isSwiping = false;
 
-    // Open modal function
     function openGalleryModal(e) {
         e.preventDefault();
         galleryModal.style.display = 'flex';
@@ -15,35 +21,31 @@ document.addEventListener('DOMContentLoaded', function () {
         galleryModal.focus();
     }
 
-    // Close modal function
     function closeGalleryModal() {
-        // Add a class to trigger the closing animation
         galleryContent.classList.add('closing');
         galleryBackdrop.classList.add('closing');
 
-        // Listen for animation end, then hide modal
-        galleryContent.addEventListener('animationend', function handler() {
+        const handleAnimationEnd = () => {
             galleryModal.style.display = 'none';
             document.body.style.overflow = 'auto';
             galleryContent.classList.remove('closing');
             galleryBackdrop.classList.remove('closing');
-            galleryContent.removeEventListener('animationend', handler);
-        });
+            galleryContent.removeEventListener('animationend', handleAnimationEnd);
+        };
+
+        galleryContent.addEventListener('animationend', handleAnimationEnd, { once: true });
     }
 
-    // Open modal on inspiration board link click
-    const openGallery = document.getElementById('open-gallery');
+    // Event listeners
     if (openGallery) {
         openGallery.addEventListener('click', openGalleryModal);
     }
 
-    // Close on close button
-    if (galleryClose) {
-        galleryClose.addEventListener('click', closeGalleryModal);
-    }
+    galleryClose.addEventListener('click', closeGalleryModal);
+    galleryBackdrop.addEventListener('click', closeGalleryModal);
 
     // Touch events for swipe down to close
-    galleryContent.addEventListener('touchstart', function (e) {
+    galleryContent.addEventListener('touchstart', function(e) {
         if (e.touches.length === 1 && galleryContent.scrollTop === 0) {
             startY = e.touches[0].clientY;
             isSwiping = true;
@@ -52,25 +54,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    galleryContent.addEventListener('touchmove', function (e) {
+    galleryContent.addEventListener('touchmove', function(e) {
         if (!isSwiping) return;
         const currentY = e.touches[0].clientY;
         const diffY = currentY - startY;
-        // Only close if swiping down and still at top
+        
         if (diffY > 40 && galleryContent.scrollTop === 0) {
             closeGalleryModal();
             isSwiping = false;
         }
     });
 
-    galleryContent.addEventListener('touchend', function () {
+    galleryContent.addEventListener('touchend', () => {
         isSwiping = false;
     });
-
-    // Close on backdrop click
-    if (galleryBackdrop) {
-        galleryBackdrop.addEventListener('click', closeGalleryModal);
-    }
 
     // Close on escape key
     document.addEventListener('keydown', function(e) {
