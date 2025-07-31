@@ -16,8 +16,8 @@
     --font-heading: 'Ysabeau SC', sans-serif;
     --font-body: 'Ysabeau SC', sans-serif;
     --font-weight-body: 500;
-    --font-size-body: clamp(14px, 3vw, 16px);
-    --font-size-small: clamp(11px, 2.5vw, 13px);
+    --font-size-body: clamp(15px, 3vw, 17px);
+    --font-size-small: clamp(13px, 2.5vw, 15px);
     --font-size-banner: 4em;
     --font-size-banner-mobile: 3em;
 }
@@ -25,23 +25,26 @@
 body, html {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Default: no scrolling for desktop */
+    overflow-y: auto; /* Enable scrolling for all screen sizes */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
     letter-spacing: 0.02em;
     line-height: 1.3; 
 }
 .page {
     width: 100%;
-    height: 100vh;
+    height: auto; /* Allow page to grow with content */
+    min-height: 100vh;
     background-image: url('images/bg2_h.jpg'); /* Replace with your image path */
     background-size: cover; /* Cover the entire card */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Prevent tiling */
     background-color: var(--accent-brown); /* light brown */
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    padding-bottom: 96px;
 }
 button.rsvp {
-    position: absolute;
+    position: fixed;
     top: 24px;
     right: 24px;
     background: var(--main-green);
@@ -75,28 +78,28 @@ button.rsvp:hover, button.rsvp:focus {
     outline: none;
 }
 .banner {
-    position: absolute;
-    top: 0px;
-    left: 24px;
+    position: relative;
+    top: auto;
+    left: auto;
     color: #fff;
     letter-spacing: 2px;
     font-family: var(--banner-heading);
     font-size: var(--font-size-banner);
     text-shadow: var(--banner-shadow);
+    margin: 0 auto 24px auto;
+    text-align: center;
 }
 .postcard {
-    position: absolute;
-    width: 50vw;
-    max-width: 700px;
+    position: relative;
+    width: calc(100% - 32px); /* 16px left + 16px right margin */
+    max-width: 724px;
     height: auto;
-    background: rgba(243, 231, 205, 0.7); /* semi-transparent old paper color */
+    background: rgba(243, 231, 205, 0.63); 
     box-shadow: var(--card-shadow);
     border-radius: var(--card-radius);
     padding: var(--card-padding);
-    margin: var(--card-padding);
+    margin: 24px auto; /* Center cards and add vertical spacing */
     box-sizing: border-box;
-    cursor: move;
-    user-select: none;
     word-wrap: break-word;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -133,7 +136,7 @@ button.rsvp:hover, button.rsvp:focus {
     margin: 0;
     padding: 0;
     line-height: 1.1rem;
-    text-align: justify;
+    text-align: left;
 }
 .postcard small {
     font-family: var(--font-body);
@@ -143,7 +146,7 @@ button.rsvp:hover, button.rsvp:focus {
     color: #15150F;
     padding: 0;
     line-height: 1.1rem;
-    text-align: justify;
+    text-align: left;
 }
 .postcard li {
     font-family: var(--font-body);
@@ -154,7 +157,7 @@ button.rsvp:hover, button.rsvp:focus {
     line-height: 1.1rem;
     padding-left: 0;
     text-indent: 0;
-    text-align: justify;
+    text-align: left;
 }
 .postcard ol,
 .postcard ul {
@@ -168,17 +171,7 @@ a {
 a:hover, a:focus {
     color: #15150F;
 }
-.copyable, .copyable * {
-    font-family: var(--font-body);
-    font-weight: bold;
-    font-size: var(--font-size-body);
-    user-select: text !important;
-    cursor: text !important;
-    -webkit-user-select: text !important;
-    -moz-user-select: text !important;
-    -ms-user-select: text !important;
-    pointer-events: auto !important;
-}
+
 .gallery-modal {
     position: fixed;
     z-index: 2000;
@@ -273,14 +266,6 @@ a:hover, a:focus {
 
 /* Mobile and small tablet styles */
 @media screen and (max-width: 768px) {
-    body, html {
-        overflow-y: auto; /* Enable scrolling */
-        overflow-x: hidden; /* Prevent horizontal scrolling */
-    }
-    .page {
-        height: auto; /* Allow page to grow with content */
-        padding-bottom: 100px; /* Space for banner */
-    }
     .page::before {
         content: '';
         position: fixed;
@@ -309,36 +294,6 @@ a:hover, a:focus {
         margin: 24px auto; 
         text-align: center;
         font-size: var(--font-size-banner-mobile); /* Slightly smaller for mobile */
-    }
-    .postcard {
-        position: relative;
-        width: calc(100% - 32px); /* 16px left + 16px right margin */
-        height: auto; 
-        margin: 16px auto; 
-        cursor: default; /* No dragging on mobile */
-        transform: none; /* No rotation */
-        padding: var(--card-padding);
-    }
-    .postcard h2 {
-        font-size: clamp(18px, 4vw, 20px);
-    }
-    .postcard p {
-        font-size: clamp(14px, 3vw, 16px);
-        display: block; 
-        margin: 0;
-        padding: 0;
-        text-align: justify;
-    }
-    .postcard small {
-        font-size: var(--font-size-small);
-        color: #15150F;
-        padding: 0;
-        text-align: justify;
-    }
-    .postcard li {
-        font-size: clamp(14px, 3vw, 16px);
-        padding: 0;
-        text-align: justify;
     }
     .gallery-content {
         padding: 16px 16px 16px 16px;
