@@ -11,8 +11,10 @@
     --font-heading: 'Ysabeau SC', sans-serif;
     --font-body: 'Ysabeau SC', sans-serif;
     --font-banner: 'Yellowtail', cursive;
-    --font-size-body: clamp(15px, 3vw, 17px);
-    --font-size-small: clamp(13px, 2.5vw, 15px);
+    --font-size-body: clamp(17px, 3vw, 19px);
+    --font-size-small: clamp(15px, 2.5vw, 17px);
+    --font-size-h2: clamp(20px, 3.5vw, 22px);
+    --font-size-h3: clamp(19px, 3vw, 20px);
     --font-size-banner: 4em;
     --font-size-banner-mobile: 3em;
 }
@@ -46,7 +48,7 @@ body, html {
     border: none;
     border-radius: var(--card-radius);
     cursor: pointer;
-    font-size: 1.3em;
+    font-size: var(--font-size-body);
     font-family: var(--font-body);
     font-weight: 600;
     box-shadow: 0 2px 8px rgba(188, 31, 27, 0.18);
@@ -93,15 +95,15 @@ body, html {
     font-family: var(--font-heading);
     color: var(--main-green);
     margin: 8px 0;
-    font-size: clamp(14px, 3.5vw, 18px);
+    font-size: var(--font-size-h2);
     text-transform: uppercase;
 }
 
 .postcard h3 {
     font-family: var(--font-heading);
     color: #15150F;
-    margin: 16px 0 8px 0;
-    font-size: clamp(13px, 3vw, 16px);
+    margin: 1rem 0 1rem 0;
+    font-size: var(--font-size-h3);
 }
 
 .postcard p, .postcard li {
@@ -110,7 +112,7 @@ body, html {
     font-size: var(--font-size-body);
     color: #15150F;
     margin: 0;
-    line-height: 1.1rem;
+    margin-bottom: 1rem;
 }
 
 .postcard li {
@@ -128,7 +130,6 @@ body, html {
     font-size: var(--font-size-small);
     display: block;
     color: #15150F;
-    line-height: 1.1rem;
 }
 
 a {
@@ -203,7 +204,7 @@ a:hover, a:focus {
     right: 18px;
     background: none;
     border: none;
-    font-size: 2em;
+    font-size: var(--font-size-body);
     color: var(--main-green);
     cursor: pointer;
     z-index: 10;
