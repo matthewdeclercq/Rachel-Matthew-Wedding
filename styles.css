@@ -292,20 +292,24 @@ a:hover, a:focus {
 
     .gallery-button {
         display: inline-block;
-        padding: 12px 24px;
-        background: linear-gradient(135deg, #8B4513, #D2691E);
-        color: white;
-        text-decoration: none;
-        border-radius: 8px;
+        background: var(--main-green);
+        color: #fff;
+        padding: 1em 1.5em;
+        border: none;
+        border-radius: var(--card-radius);
+        font-size: var(--font-size-body);
+        font-family: var(--font-body);
         font-weight: 600;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 2px 8px rgba(188, 31, 27, 0.18);
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        text-decoration: none;
     }
 
-    .gallery-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    .gallery-button:hover, .gallery-button:focus {
+        background: var(--main-green-light);
+        color: #fffbe6;
+        box-shadow: 0 6px 18px rgba(188, 31, 27, 0.22), 0 0 0 4px rgba(183, 201, 168, 0.33);
+        outline: none;
     }
 
     .gallery-button span {
