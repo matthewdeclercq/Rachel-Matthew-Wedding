@@ -132,6 +132,10 @@ body, html {
     color: #15150F;
 }
 
+.thank-you-section {
+    text-align: center;
+}
+
 a {
     color: #23395d;
     text-decoration: underline;
