@@ -278,12 +278,38 @@ a:hover, a:focus {
         min-height: 90px;
     }
 
-    .gallery-embed {
+    .gallery-link {
         margin-top: 20px;
+        text-align: center;
     }
 
-    .gallery-embed iframe {
+    .gallery-link p {
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        color: var(--text-color);
+    }
+
+    .gallery-button {
+        display: inline-block;
+        padding: 12px 24px;
+        background: linear-gradient(135deg, #8B4513, #D2691E);
+        color: white;
+        text-decoration: none;
         border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .gallery-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-button span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
 }
