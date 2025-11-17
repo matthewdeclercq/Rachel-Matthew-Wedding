@@ -38,30 +38,6 @@ body, html {
     padding-top: 24px;
 }
 
-.rsvp {
-    position: fixed;
-    top: 24px;
-    right: 24px;
-    background: var(--main-green);
-    color: #fff;
-    padding: 1em 1.5em;
-    border: none;
-    border-radius: var(--card-radius);
-    cursor: pointer;
-    font-size: var(--font-size-body);
-    font-family: var(--font-body);
-    font-weight: 600;
-    box-shadow: 0 2px 8px rgba(188, 31, 27, 0.18);
-    z-index: 1000;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-}
-
-.rsvp:hover, .rsvp:focus {
-    background: var(--main-green-light);
-    color: #fffbe6;
-    box-shadow: 0 6px 18px rgba(188, 31, 27, 0.22), 0 0 0 4px rgba(183, 201, 168, 0.33);
-    outline: none;
-}
 
 .banner {
     color: #fff;
@@ -142,98 +118,41 @@ a:hover, a:focus {
     color: #15150F;
 }
 
-/* Gallery Modal */
-.gallery-modal {
-    position: fixed;
-    z-index: 2000;
-    inset: 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    pointer-events: none;
-}
-
-.gallery-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(41, 82, 76, 0.65);
-    backdrop-filter: blur(2px);
-    pointer-events: auto;
-    transition: opacity 0.4s;
-    opacity: 1;
-}
-
-.gallery-backdrop.closing {
-    opacity: 0;
-}
-
-.gallery-content {
-    position: relative;
-    width: 100vw;
-    min-height: 70vh;
-    max-height: 90vh;
-    background: rgba(243, 231, 205, 0.6);
-    border-radius: 24px 24px 0 0;
-    box-shadow: 0 -8px 32px rgba(41,82,76,0.18);
-    padding: 24px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transform: translateY(100%);
-    animation: slideUpSheet 0.3s cubic-bezier(.4,1.4,.6,1) forwards;
-    pointer-events: auto;
-    backdrop-filter: blur(10px);
-    will-change: transform;
-}
-
-@keyframes slideUpSheet {
-    to { transform: translateY(0); }
-}
-
-.gallery-content.closing {
-    animation: slideDownSheet 0.3s cubic-bezier(.4,1.4,.6,1) forwards;
-}
-
-@keyframes slideDownSheet {
-    to { transform: translateY(100%); }
-}
-
-.gallery-close {
-    position: absolute;
-    top: 12px;
-    right: 18px;
-    background: none;
-    border: none;
+.gallery-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #bc1f1b, #8b0000);
+    color: #fff;
+    padding: 1em 1.5em;
+    border-radius: var(--card-radius);
     font-size: var(--font-size-body);
-    color: var(--main-green);
-    cursor: pointer;
-    z-index: 10;
-    transition: color 0.2s;
+    font-family: var(--font-body);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(188, 31, 27, 0.18);
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
 }
 
-.gallery-close:hover {
-    color: #ff3131;
+.gallery-button:hover, .gallery-button:focus {
+    background: linear-gradient(135deg, #8b0000, #bc1f1b);
+    color: #fffbe6;
+    box-shadow: 0 6px 18px rgba(188, 31, 27, 0.22), 0 0 0 4px rgba(183, 201, 168, 0.33);
+    outline: none;
 }
 
-.gallery-images {
+.gallery-button span {
     display: flex;
-    gap: 24px;
-    justify-content: center;
-    margin-top: 40px;
+    align-items: center;
+    gap: 8px;
 }
 
-.gallery-images img {
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(41,82,76,0.4);
-    width: 28vw;
-    max-width: 320px;
-    min-width: 120px;
-    height: auto;
-    object-fit: cover;
-    background: #eee;
-    transition: transform 0.2s, box-shadow 0.2s;
+video {
+    width:100%; 
+    max-width:800px;
+    height:auto; 
+    max-height: 90vh; 
+    border-radius: var(--card-radius)
 }
+
 
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
@@ -246,23 +165,10 @@ a:hover, a:focus {
         pointer-events: none;
     }
     
-    .rsvp {
-        left: 50%;
-        bottom: 24px;
-        top: auto;
-        right: auto;
-        transform: translateX(-50%);
-    }
-    
     .banner {
         font-size: var(--font-size-banner-mobile);
         position: relative;
         z-index: 1;
-    }
-    
-    .gallery-content {
-        padding: 16px;
-        min-height: 75vh;
     }
     
     .gallery-images {
@@ -278,43 +184,10 @@ a:hover, a:focus {
         min-width: 100px;
         min-height: 90px;
     }
-
-    .gallery-link {
-        margin-top: 20px;
-        text-align: center;
+    video {
+        width:100%; 
+        max-width:800px; 
+        height:auto; 
     }
 
-    .gallery-link p {
-        margin-bottom: 20px;
-        font-size: 1.1rem;
-        color: var(--text-color);
-    }
-
-    .gallery-button {
-        display: inline-block;
-        background: linear-gradient(135deg, #bc1f1b, #8b0000);
-        color: #fff;
-        padding: 1em 1.5em;
-        border: 2px solid #fff;
-        border-radius: var(--card-radius);
-        font-size: var(--font-size-body);
-        font-family: var(--font-body);
-        font-weight: 600;
-        box-shadow: 0 2px 8px rgba(188, 31, 27, 0.18);
-        transition: all 0.3s ease-in-out;
-        text-decoration: none;
-    }
-
-    .gallery-button:hover, .gallery-button:focus {
-        background: linear-gradient(135deg, #8b0000, #bc1f1b);
-        color: #fffbe6;
-        box-shadow: 0 6px 18px rgba(188, 31, 27, 0.22), 0 0 0 4px rgba(183, 201, 168, 0.33);
-        outline: none;
-    }
-
-    .gallery-button span {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
 }
