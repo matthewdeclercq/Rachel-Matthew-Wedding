@@ -292,7 +292,7 @@ a:hover, a:focus {
 
     .gallery-button {
         display: inline-block;
-        background: var(--main-green);
+        background: linear-gradient(135deg, var(--main-green), var(--main-green-light));
         color: #fff;
         padding: 1em 1.5em;
         border: none;
@@ -306,7 +306,7 @@ a:hover, a:focus {
     }
 
     .gallery-button:hover, .gallery-button:focus {
-        background: var(--main-green-light);
+        background: linear-gradient(135deg, var(--main-green-light), var(--main-green));
         color: #fffbe6;
         box-shadow: 0 6px 18px rgba(188, 31, 27, 0.22), 0 0 0 4px rgba(183, 201, 168, 0.33);
         outline: none;
