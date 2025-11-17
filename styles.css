@@ -277,4 +277,13 @@ a:hover, a:focus {
         min-width: 100px;
         min-height: 90px;
     }
+
+    .gallery-embed {
+        margin-top: 20px;
+    }
+
+    .gallery-embed iframe {
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 }
