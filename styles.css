@@ -82,6 +82,7 @@ body, html {
     padding: var(--card-padding);
     margin: 24px auto;
     backdrop-filter: blur(10px);
+    text-align: center;
 }
 
 .postcard-divider {
@@ -130,10 +131,6 @@ body, html {
     font-size: var(--font-size-small);
     display: block;
     color: #15150F;
-}
-
-.thank-you-section {
-    text-align: center;
 }
 
 a {
