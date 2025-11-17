@@ -292,10 +292,10 @@ a:hover, a:focus {
 
     .gallery-button {
         display: inline-block;
-        background: linear-gradient(135deg, #bc1f1b, #a01815);
+        background: linear-gradient(135deg, #bc1f1b, #8b0000);
         color: #fff;
         padding: 1em 1.5em;
-        border: none;
+        border: 2px solid #fff;
         border-radius: var(--card-radius);
         font-size: var(--font-size-body);
         font-family: var(--font-body);
@@ -306,7 +306,7 @@ a:hover, a:focus {
     }
 
     .gallery-button:hover, .gallery-button:focus {
-        background: linear-gradient(135deg, #a01815, #bc1f1b);
+        background: linear-gradient(135deg, #8b0000, #bc1f1b);
         color: #fffbe6;
         box-shadow: 0 6px 18px rgba(188, 31, 27, 0.22), 0 0 0 4px rgba(183, 201, 168, 0.33);
         outline: none;
